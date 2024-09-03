@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../app.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../repositories/fruit.dart';
 import '../../../ui/ui.dart';
@@ -56,6 +58,7 @@ class BasketView extends StatelessWidget {
                 ),
                 PrimaryButton(
                   content: AppLocalizations.of(context)!.startShopping,
+                  onPressed: () => context.go('/about'),
                 ),
               ],
             ),
@@ -73,8 +76,7 @@ class BasketView extends StatelessWidget {
                   height: AppTheme.of(context).spacing.xs,
                 ),
                 PrimaryButton(
-                  content:
-                      AppLocalizations.of(context)!.basketContinueToShipping,
+                  content: AppLocalizations.of(context)!.basketContinueToShipping,
                 ),
               ],
             ),

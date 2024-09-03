@@ -26,7 +26,9 @@ class PrimaryButton extends StatelessWidget {
           horizontal: AppTheme.of(context).spacing.l,
         ),
         decoration: BoxDecoration(
-          color: AppTheme.of(context).background.brand,
+          color: onPressed == null
+              ? AppTheme.of(context).background.primaryInactive
+              : AppTheme.of(context).background.brand,
           borderRadius: BorderRadius.circular(
             AppTheme.of(context).radius.full,
           ),
@@ -34,30 +36,26 @@ class PrimaryButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (leading != null)
-              Row(
-                children: [
-                  leading!,
-                  SizedBox(
-                    width: AppTheme.of(context).spacing.xs,
-                  ),
-                ],
+            if (leading != null) ...[
+              leading!,
+              SizedBox(
+                width: AppTheme.of(context).spacing.xs,
               ),
-            Text(
-              content,
-              style: AppTheme.of(context).typography.label.copyWith(
-                    color: AppTheme.of(context).text.inverse,
-                  ),
+            ],
+            Flexible(
+              child: Text(
+                content,
+                style: AppTheme.of(context).typography.label.copyWith(
+                      color: onPressed == null ? AppTheme.of(context).text.inactive : AppTheme.of(context).text.inverse,
+                    ),
+              ),
             ),
-            if (trailing != null)
-              Row(
-                children: [
-                  SizedBox(
-                    width: AppTheme.of(context).spacing.xs,
-                  ),
-                  trailing!,
-                ],
+            if (trailing != null) ...[
+              SizedBox(
+                width: AppTheme.of(context).spacing.xs,
               ),
+              trailing!,
+            ],
           ],
         ),
       ),
